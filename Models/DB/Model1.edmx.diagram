@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ccabccc3e41149a6a0ee52c80378cd11" Name="Diagram1">
+        <EntityTypeShape EntityType="AppDBModel.Location" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppDBModel.Mail" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppDBModel.People" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppDBModel.Phone" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="AppDBModel.FK_PersonID_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="AppDBModel.FK_PersonIDMail" ManuallyRouted="false" />
+        <AssociationConnector Association="AppDBModel.FK_PersonID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

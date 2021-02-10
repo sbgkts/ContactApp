@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="People" Relationship="Self.FK_PersonID_Location" FromRole="Location" ToRole="People" />
+  </EntityType>
+  <EntityType Name="Mail">
+    <Key>
+      <PropertyRef Name="MailID" />
+    </Key>
+    <Property Name="MailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mail1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="People" Relationship="Self.FK_PersonIDMail" FromRole="Mail" ToRole="People" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Firma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_PersonID_Location" FromRole="People" ToRole="Location" />
+    <NavigationProperty Name="Mail" Relationship="Self.FK_PersonIDMail" FromRole="People" ToRole="Mail" />
+    <NavigationProperty Name="Phone" Relationship="Self.FK_PersonID" FromRole="People" ToRole="Phone" />
+  </EntityType>
+  <EntityType Name="Phone">
+    <Key>
+      <PropertyRef Name="PhoneID" />
+    </Key>
+    <Property Name="PhoneID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone1" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="People" Relationship="Self.FK_PersonID" FromRole="Phone" ToRole="People" />
+  </EntityType>
+  <Association Name="FK_PersonID_Location">
+    <End Role="People" Type="Self.People" Multiplicity="1" />
+    <End Role="Location" Type="Self.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonIDMail">
+    <End Role="People" Type="Self.People" Multiplicity="1" />
+    <End Role="Mail" Type="Self.Mail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mail">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonID">
+    <End Role="People" Type="Self.People" Multiplicity="1" />
+    <End Role="Phone" Type="Self.Phone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Phone">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Location" EntityType="Self.Location" />
+    <EntitySet Name="Mail" EntityType="Self.Mail" />
+    <EntitySet Name="People" EntityType="Self.People" />
+    <EntitySet Name="Phone" EntityType="Self.Phone" />
+    <AssociationSet Name="FK_PersonID_Location" Association="Self.FK_PersonID_Location">
+      <End Role="People" EntitySet="People" />
+      <End Role="Location" EntitySet="Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonIDMail" Association="Self.FK_PersonIDMail">
+      <End Role="People" EntitySet="People" />
+      <End Role="Mail" EntitySet="Mail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonID" Association="Self.FK_PersonID">
+      <End Role="People" EntitySet="People" />
+      <End Role="Phone" EntitySet="Phone" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

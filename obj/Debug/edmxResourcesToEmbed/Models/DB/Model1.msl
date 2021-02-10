@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDBModelStoreContainer" CdmEntityContainer="AppDBEntities">
+    <EntitySetMapping Name="Location">
+      <EntityTypeMapping TypeName="AppDBModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="Location1" ColumnName="Location" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mail">
+      <EntityTypeMapping TypeName="AppDBModel.Mail">
+        <MappingFragment StoreEntitySet="Mail">
+          <ScalarProperty Name="MailID" ColumnName="MailID" />
+          <ScalarProperty Name="Mail1" ColumnName="Mail" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="AppDBModel.People">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Firma" ColumnName="Firma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phone">
+      <EntityTypeMapping TypeName="AppDBModel.Phone">
+        <MappingFragment StoreEntitySet="Phone">
+          <ScalarProperty Name="PhoneID" ColumnName="PhoneID" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

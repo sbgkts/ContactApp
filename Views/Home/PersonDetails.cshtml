@@ -1,0 +1,114 @@
+﻿@using ContactApp.Models
+@model PersonContact
+@{
+    ViewBag.Title = "PersonDetails";
+}
+@using (Html.BeginForm("Add", "Home", FormMethod.Post))
+{ 
+    <h2 class="text-dark">@Model.Ad @Model.Soyad</h2>
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md" style="height:50vh;overflow-y:scroll">
+            @if (Model.PersonPhone.Count == 0)
+            {
+                <h6 style="color:#656565">Kişinin Sistemde Kayıtlı Telefon Numarası Bulunmuyor</h6>
+            }
+            else
+            {
+                int id = 0;
+                <h6 style="color:#656565">Kişinin Kayıtlı Telefon Numaraları :</h6>
+                <table class="table table-hover">
+                    <tbody>
+
+                        @foreach (var item in Model.PersonPhone)
+                        {
+                            id++;
+                            <tr>
+                                <th scope="row">@id</th>
+                                <td>@item</td>
+                                <td><a href="/Home/DeleteNumber?phone=@item" class="btn btn-danger">Numarayı Sil</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            <table>
+                <tr>
+                    <td><span style="color:#303030">Numarayı Kaydet : </span> </td>
+                    <td>@Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @maxlength = 11 }) </td>
+                    <td><input type="submit" value="Kaydet" class="btn btn-success" /></td>
+                    <td>@Html.TextAreaFor(x => x.PersonID, new { style = "visibility : hidden" })</td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="col-md" style="height:50vh;overflow-y:scroll">
+            @if (Model.PersonMail.Count == 0)
+            {
+            <h6 style="color:#656565">Kişinin Sistemde Mail Kayıtlı Adresi Bulunmuyor</h6>
+            }
+            else
+            {
+            int id = 0;
+            <h6 style="color:#656565">Kişinin Kayıtlı Mail Adresleri :</h6>
+            <table class="table table-hover">
+                <tbody>
+                    @foreach (var item in Model.PersonMail)
+                    {
+                        id++;
+                        <tr>
+                            <th scope="row">@id</th>
+                            <td>@item</td>
+                            <td><a href="/Home/DeleteMail?mail=@item" class="btn btn-danger">Mail Adresini Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            }
+            <table>
+                <tr>
+                    <td><span style="color:#303030">Maili Kaydet : </span> </td>
+                    <td>@Html.TextBoxFor(x => x.Mail, new { @class = "form-control" }) </td>
+                    <td><input type="submit" value="Kaydet" class="btn btn-success" /></td>
+                    <td>@Html.TextAreaFor(x => x.PersonID, new { style = "visibility : hidden" })</td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="col-md" style="height:50vh;overflow-y:scroll">
+            @if (Model.PersonLocation.Count == 0)
+            {
+            <h6 style="color:#656565">Kişinin Sistemde Kayıtlı Adresi Bulunmuyor</h6>
+            }
+            else
+            {
+            int id = 0;
+            <h6 style="color:#656565">Kişinin Kayıtlı Adresleri :</h6>
+            <table class="table table-hover">
+                <tbody>
+                    @foreach (var item in Model.PersonLocation)
+                    {
+                        id++;
+                        <tr>
+                            <th scope="row">@id</th>
+                            <td>@item</td>
+                            <td><a href="/Home/DeleteLocation?location=@item" class="btn btn-danger">Adresi Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            }
+            <table>
+                <tr>
+                    <td><span style="color:#303030">Adresi Kaydet : </span> </td>
+                    <td>@Html.TextAreaFor(x => x.Location, new { @class = "form-control" }) </td>
+                    <td><input type="submit" value="Kaydet" class="btn btn-success" /></td>
+                    <td>@Html.TextAreaFor(x => x.PersonID, new { style = "visibility : hidden" })</td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+}

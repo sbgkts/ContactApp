@@ -1,0 +1,30 @@
+﻿@using ContactApp.Models.DB
+@model List<People>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm())
+{
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">İsim</th>
+                <th scope="col">Soyisim</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Ad</td>
+                    <td>@x.Soyad</td>
+                    <td><a href="/Home/PersonDetails/@x.ID" class="btn btn-info">Detay</a> <a href="/Home/PersonDelete?id=@x.ID" class="btn btn-danger">Kişiyi Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}

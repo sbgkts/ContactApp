@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+}
+@{ 
+    int id = 0;
+}
+<div class="container">
+    <h2>Konum Listesi</h2>
+    <table class="table table-hover">
+        <tbody>
+
+            @foreach (var item in ViewBag.locationlist)
+            {
+                id++;
+                <tr>
+                    <th scope="row">@id</th>
+                    <td> <span style="color:#757575">@item</span></td>
+                    <td>
+                        <a class="btn btn-outline-success" href="/Home/NumberOfPeople?il=@item">@item İlinde Bulunan Kayıtlı Kişi Sayısı</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

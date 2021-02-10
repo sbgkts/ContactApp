@@ -1,0 +1,29 @@
+﻿@using ContactApp.Models
+@model PersonContact
+@{
+    ViewBag.Title = "AddPerson";
+}
+
+<h4>Yeni Kişi Kaydı</h4>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>İsim : </td>
+            <td>@Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>Soyisim : </td>
+            <td>@Html.TextBoxFor(x => x.Soyad, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>Firma : </td>
+            <td>@Html.TextBoxFor(x => x.Firma, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" class="btn btn-success" value="Kişiyi Kaydet" /></td>
+        </tr>
+    </table>
+}
